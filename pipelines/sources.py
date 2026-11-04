@@ -46,6 +46,7 @@ def list_sources() -> list[dict]:
         (to_source(c) for c in catalog["citygml"] if is_city(c)),
         key=lambda s: s["city_code"],
     )
+    SOURCES.parent.mkdir(parents=True, exist_ok=True)
     write_atomic(SOURCES, "".join(json.dumps(s, ensure_ascii=False) + "\n" for s in sources))
     logger.info("  建物のある都市: %d", len(sources))
     return sources
