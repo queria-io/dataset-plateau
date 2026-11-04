@@ -1,0 +1,37 @@
+schema: bldg
+name: source
+title: 取り込んだ市区町村のデータ
+description: |-
+  取り込んだ PLATEAU の市区町村ごとの CityGML。1 行が 1 市区町村。出典を書くときのデータセットのページ URL と、データの年度・製品仕様書の版を持つ。
+
+  出典：「3D都市モデル（Project PLATEAU）」（国土交通省、各地方公共団体）。一覧は PLATEAU VIEW のデータカタログ API から取得した。
+primary_key: [city_code]
+sources:
+  - path: https://www.geospatial.jp/ckan/dataset/plateau
+fields:
+  - name: city_code
+    title: 市区町村コード（5 桁）
+    description: 政令市は市のコード（札幌市は 01100）
+    extensions: { queria: { semantic: { role: entity, name: city } } }
+  - name: lg_code
+    title: 全国地方公共団体コード
+    extensions: { queria: { semantic: { role: entity, name: city } } }
+  - name: prefecture_code
+    title: 都道府県コード
+    extensions: { queria: { semantic: { role: entity, name: prefecture } } }
+  - name: prefecture_name
+    title: 都道府県名
+  - name: city_name
+    title: 市区町村名
+  - name: year
+    title: データの年度
+  - name: spec
+    title: 製品仕様書の版
+  - name: file
+    title: zip のファイル名
+  - name: page_url
+    title: G空間情報センターのページ
+  - name: zip_url
+    title: CityGML の zip の URL
+  - name: size
+    title: zip の大きさ（バイト）

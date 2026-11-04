@@ -1,0 +1,30 @@
+name: "plateau"
+version: "1.0.0"
+
+profile: "plateau"
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros", "shared/macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  plateau:
+    +database: plateau
+    # building を作る途中の表。メモリの中のデータベースに置き、公開しない
+    work:
+      +database: memory
+      +schema: main
+      +materialized: table
+      +pre-hook: "SET preserve_insertion_order = false"
+    bldg:
+      +materialized: table
+      # 市区町村と位置で引くので、行グループを 8,192 行にする（建物は 1 棟 140 バイト前後で 1 つ 1MB 前後）。
+      # 設定はスキーマに付く (dbt は __dbt_tmp に書いてから改名するので、テーブルに付けても効かない)
+      +pre-hook: "CALL plateau.set_option('parquet_row_group_size', 8192, schema => 'bldg')"
