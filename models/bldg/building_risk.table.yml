@@ -8,6 +8,7 @@ description: |-
   行が無い建物は「浸水しない」ではなく、その市区町村のデータに想定が載っていないことがある。どの想定が載っているかは市区町村によって違う。
 
   出典：「3D都市モデル（Project PLATEAU）」（国土交通省、各地方公共団体）。Queria が CityGML の建物の災害リスク属性を読んで作成した。
+published: true
 sources:
   - path: https://www.geospatial.jp/ckan/dataset/plateau
 fields:

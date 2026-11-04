@@ -10,6 +10,7 @@ description: |-
   small_area_code・machiaza_id は外形の上の代表点（lng / lat）が入る小地域と町字。
 
   出典：「3D都市モデル（Project PLATEAU）」（国土交通省、各地方公共団体）。市区町村ごとのデータセットのページ URL は source にある。Queria が CityGML の建物を読み、1 棟 1 行にして作成した。
+published: true
 primary_key: [gml_id]
 sources:
   - path: https://www.geospatial.jp/ckan/dataset/plateau
