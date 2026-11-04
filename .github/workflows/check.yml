@@ -15,8 +15,13 @@ jobs:
         with:
           submodules: true
       - uses: astral-sh/setup-uv@v7
+      # 比べられなかったとき (カタログや公開中の source が読めない) に「変わっていない」で終わらせない。
+      # echo の引数の中の $(...) は失敗しても止まらないので、代入を分けて pipefail で止める
       - id: check
-        run: echo "changed=$(uv run --no-project --with duckdb==1.5.6 python scripts/check_upstream.py | paste -sd, -)" >> "$GITHUB_OUTPUT"
+        shell: bash
+        run: |
+          changed=$(uv run --no-project --with duckdb==1.5.6 python scripts/check_upstream.py | paste -sd, -)
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
       - name: Notify Discord
         if: steps.check.outputs.changed != ''
         env:

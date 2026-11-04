@@ -28,6 +28,7 @@ import pyarrow.parquet as pq
 from lxml import etree
 from shapely.geometry import MultiPolygon, Polygon
 
+from pipelines.sources import USER_AGENT
 from shared.fetch import RangeFile, replacing
 
 GML_ID = "{http://www.opengis.net/gml}id"
@@ -313,8 +314,11 @@ def unpack(block: bytes, start: int, info: zipfile.ZipInfo) -> bytes | None:
 
 def members(url: str, wanted) -> Iterator[tuple[str, bytes]]:
     """zip の中で wanted(名前) が真のメンバーを (名前, 中身) で返す。"""
-    raw = RangeFile(url)
-    with zipfile.ZipFile(io.BufferedReader(raw, 1 << 16)) as z:
+    raw = RangeFile(url, user_agent=USER_AGENT)
+    # 塊を読むのと zipfile が読むのは別のファイルにする。同じものを動かすと、BufferedReader が
+    # 覚えている位置とずれて、z.read に戻ったときに違う場所を読む
+    directory = RangeFile(url, raw.size, user_agent=USER_AGENT)
+    with zipfile.ZipFile(io.BufferedReader(directory, 1 << 16)) as z:
         infos = [i for i in z.infolist() if wanted(i.filename)]
         for group in blocks(infos):
             start = group[0].header_offset
