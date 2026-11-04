@@ -45,7 +45,5 @@ schemas:
   - name: bldg
     title: 建築物
 
-extensions:
-  queria:
-    themes: [housing_land, justice_safety_environment]
-    cover: 🏙️
+themes: [housing_land, justice_safety_environment]
+cover: 🏙️

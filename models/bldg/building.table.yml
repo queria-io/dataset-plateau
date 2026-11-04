@@ -10,6 +10,7 @@ description: |-
   small_area_code・machiaza_id は外形の上の代表点（lng / lat）が入る小地域と町字。
 
   出典：「3D都市モデル（Project PLATEAU）」（国土交通省、各地方公共団体）。市区町村ごとのデータセットのページ URL は source にある。Queria が CityGML の建物を読み、1 棟 1 行にして作成した。
+published: true
 primary_key: [gml_id]
 sources:
   - path: https://www.geospatial.jp/ckan/dataset/plateau
@@ -23,29 +24,29 @@ fields:
   - name: city_code
     title: 市区町村コード（5 桁）
     description: 建物がある市区町村。原典の値で、無いときは町字から
-    extensions: { queria: { semantic: { role: entity, name: city } } }
+    semantic: { role: entity, name: city }
   - name: lg_code
     title: 全国地方公共団体コード
     description: city_code に検査数字を付けた 6 桁
-    extensions: { queria: { semantic: { role: entity, name: city } } }
+    semantic: { role: entity, name: city }
   - name: prefecture_code
     title: 都道府県コード
-    extensions: { queria: { semantic: { role: entity, name: prefecture } } }
+    semantic: { role: entity, name: prefecture }
   - name: class
     title: 建物の種類
     description: 普通建物・堅ろう建物など
-    extensions: { queria: { semantic: { role: dimension } } }
+    semantic: { role: dimension }
   - name: usage
     title: 用途
     description: 住宅・共同住宅・商業施設・業務施設・工場など。わからないものは「不明」
-    extensions: { queria: { semantic: { role: dimension } } }
+    semantic: { role: dimension }
   - name: usage_code
     title: 用途のコード
     description: 製品仕様書の符号（411 が住宅など）
   - name: detailed_usage
     title: 詳細用途
     description: 都市計画基礎調査の建物用途（独立住宅など）
-    extensions: { queria: { semantic: { role: dimension } } }
+    semantic: { role: dimension }
   - name: measured_height
     title: 計測高さ（m）
     description: 航空測量などで測った、地面から建物の最も高い所までの高さ
@@ -65,11 +66,11 @@ fields:
   - name: structure
     title: 構造
     description: 木造・鉄骨造・鉄筋コンクリート造など。一部の市区町村だけ
-    extensions: { queria: { semantic: { role: dimension } } }
+    semantic: { role: dimension }
   - name: fireproof_structure
     title: 耐火構造の種別
     description: 耐火・準耐火・その他
-    extensions: { queria: { semantic: { role: dimension } } }
+    semantic: { role: dimension }
   - name: survey_year
     title: 調査年
     description: 属性のもとになった都市計画基礎調査の年
@@ -91,11 +92,11 @@ fields:
   - name: small_area_code
     title: 小地域コード
     description: 代表点が入る国勢調査の小地域（e_stat の boundary.small_area の key_code）
-    extensions: { queria: { semantic: { role: entity, name: small_area } } }
+    semantic: { role: entity, name: small_area }
   - name: machiaza_id
     title: 町字 ID
     description: 代表点が入る町字（japan_address_code の town_shape）。lg_code との組でアドレス・ベース・レジストリの町字を指す
-    extensions: { queria: { semantic: { role: entity, name: town } } }
+    semantic: { role: entity, name: town }
   - name: lng
     title: 経度
     description: 外形の上の代表点（ST_PointOnSurface）
@@ -104,7 +105,7 @@ fields:
   - name: mesh3
     title: 3 次メッシュコード
     description: 代表点が入る JIS X 0410 の 3 次メッシュ（約 1km 四方）
-    extensions: { queria: { semantic: { role: entity, name: mesh } } }
+    semantic: { role: entity, name: mesh }
   - name: geometry
     title: 外形
     description: LOD0 の平面の形（経度・緯度、JGD2011）。原典に LOD0 が無いときは LOD1 の立体の底面
