@@ -2,14 +2,11 @@ schema: bldg
 name: building
 title: 建物
 description: |-
-  PLATEAU の建物。1 行が 1 棟。外形（LOD0 の平面の形）と、計測高さ・階数・用途などの属性を持つ。外形を measured_height で押し出すと LOD1 の立体になる。
-  属性の多くは都市計画基礎調査から来ていて、どの項目が入っているかは市区町村によって違う。用途・高さはほぼすべての市区町村にあり、住所・建築年・延べ面積・構造は一部にしか無い。
-  住所は町丁目まで（「東京都日野市旭が丘一丁目」）で、番地は入っていない。
-  原典が不明を表すのに使う値（計測高さ・面積の -9999、階数の 9999、建築年・調査年の 1 など）は NULL にしてある。
-  市区町村のデータは 3 次メッシュの単位で作られていて、境のメッシュには隣の市区町村の建物も入っている。同じ建物は 1 行にまとめ、隣の市区町村が自分のデータを持っているときはそちらの建物を使う。
-  small_area_code・machiaza_id は外形の上の代表点（lng / lat）が入る小地域と町字。
+  PLATEAU の建物です。1 行が 1 棟で、外形（LOD0）と計測高さ・階数・用途などを持ちます。
 
-  出典：「3D都市モデル（Project PLATEAU）」（国土交通省、各地方公共団体）。市区町村ごとのデータセットのページ URL は source にある。Queria が CityGML の建物を読み、1 棟 1 行にして作成した。
+  - どの項目が入っているかは市区町村によって違います。住所・建築年・延べ面積・構造は一部の市区町村にしかありません
+  - 住所は町丁目までで、番地は入っていません
+  - 原典が不明を表す値（高さの -9999 など）は NULL にしています
 published: true
 primary_key: [gml_id]
 sources:
@@ -17,13 +14,13 @@ sources:
 fields:
   - name: gml_id
     title: 建物の GML ID
-    description: CityGML の gml:id。PLATEAU が配る 3D Tiles・MVT の地物の gml_id と同じで、PLATEAU の表示用データとこの値でつなげる
+    description: CityGML の gml:id。PLATEAU の 3D Tiles・MVT の gml_id と同じ
   - name: building_id
     title: 建物 ID
-    description: PLATEAU の建物 ID（13212-bldg-17683 のような形）。市区町村の中で一意
+    description: PLATEAU の建物 ID（13212-bldg-17683 など）
   - name: city_code
     title: 市区町村コード（5 桁）
-    description: 建物がある市区町村。原典の値で、無いときは町字から
+    description: 建物がある市区町村
     semantic: { role: entity, name: city }
   - name: lg_code
     title: 全国地方公共団体コード
@@ -38,7 +35,7 @@ fields:
     semantic: { role: dimension }
   - name: usage
     title: 用途
-    description: 住宅・共同住宅・商業施設・業務施設・工場など。わからないものは「不明」
+    description: 住宅・共同住宅・商業施設・工場など
     semantic: { role: dimension }
   - name: usage_code
     title: 用途のコード
@@ -49,7 +46,7 @@ fields:
     semantic: { role: dimension }
   - name: measured_height
     title: 計測高さ（m）
-    description: 航空測量などで測った、地面から建物の最も高い所までの高さ
+    description: 地面から建物の最も高い所までの高さ
   - name: storeys_above_ground
     title: 地上階数
   - name: storeys_below_ground
@@ -62,7 +59,7 @@ fields:
     description: 一部の市区町村だけ
   - name: footprint_area
     title: 建築面積（m²）
-    description: 原典の建築面積。無いときは屋根の外周の面積
+    description: 原典の建築面積。ないときは屋根の外周の面積
   - name: structure
     title: 構造
     description: 木造・鉄骨造・鉄筋コンクリート造など。一部の市区町村だけ
@@ -76,7 +73,7 @@ fields:
     description: 属性のもとになった都市計画基礎調査の年
   - name: address
     title: 住所
-    description: 町丁目まで。番地は入っていない。一部の市区町村だけ
+    description: 町丁目まで。一部の市区町村だけ
   - name: real_estate_id
     title: 不動産 ID（建物）
     description: 不動産 ID の実証に参加した市区町村だけ
@@ -85,17 +82,17 @@ fields:
     description: 建物が建つ土地の不動産 ID の配列
   - name: lod
     title: 詳細度（LOD）
-    description: 原典が持ついちばん細かい立体の詳細度。1 は箱、2 は屋根の形まで、3 は窓や扉まで。この表が持つのは外形だけ
+    description: 原典が持つ最も細かい立体の詳細度（1〜3）
   - name: attributes
     title: 汎用属性
-    description: 市区町村が独自に足した属性（gen:*Attribute）の名前 → 値の対応
+    description: 市区町村が独自に追加した属性の名前と値
   - name: small_area_code
     title: 小地域コード
-    description: 代表点が入る国勢調査の小地域（e_stat の boundary.small_area の key_code）
+    description: 代表点が入る国勢調査の小地域
     semantic: { role: entity, name: small_area }
   - name: machiaza_id
     title: 町字 ID
-    description: 代表点が入る町字（japan_address_code の town_shape）。lg_code との組でアドレス・ベース・レジストリの町字を指す
+    description: 代表点が入る町字。lg_code との組で町字を指します
     semantic: { role: entity, name: town }
   - name: lng
     title: 経度
@@ -104,14 +101,14 @@ fields:
     title: 緯度
   - name: mesh3
     title: 3 次メッシュコード
-    description: 代表点が入る JIS X 0410 の 3 次メッシュ（約 1km 四方）
+    description: 代表点が入る 3 次メッシュ（約 1km 四方）
     semantic: { role: entity, name: mesh }
   - name: geometry
     title: 外形
-    description: LOD0 の平面の形（経度・緯度、JGD2011）。原典に LOD0 が無いときは LOD1 の立体の底面
+    description: LOD0 の平面の形（経緯度 JGD2011）
   - name: source_city_code
     title: 取り込んだデータの市区町村コード
-    description: この建物を読んだ PLATEAU のデータの市区町村。source の city_code
+    description: この建物を読んだデータの市区町村
   - name: source_year
     title: データの年度
   - name: file
