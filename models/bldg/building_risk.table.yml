@@ -2,12 +2,10 @@ schema: bldg
 name: building_risk
 title: 建物の災害リスク
 description: |-
-  建物ごとの浸水深と土砂災害警戒区域。1 行が 1 棟 × 1 想定で、gml_id で building とつながる。
-  洪水は河川（description）と想定の規模（scale：計画規模・想定最大規模）ごとに 1 行あり、同じ建物に何行も付く。津波・高潮・内水も想定ごとに 1 行。
-  土砂災害は、建物が入る区域の種類（description：急傾斜地の崩壊など）と区域（area_type：警戒区域・特別警戒区域）を持つ。
-  行が無い建物は「浸水しない」ではなく、その市区町村のデータに想定が載っていないことがある。どの想定が載っているかは市区町村によって違う。
+  建物ごとの浸水深と土砂災害警戒区域です。1 行が 1 棟の 1 想定で、gml_id で building と結合します。
 
-  出典：「3D都市モデル（Project PLATEAU）」（国土交通省、各地方公共団体）。Queria が CityGML の建物の災害リスク属性を読んで作成した。
+  - 洪水は河川と想定の規模ごとに 1 行あり、同じ建物に何行も付きます
+  - 行がない建物は「浸水しない」とは限りません。想定が載っていない市区町村があります
 published: true
 sources:
   - path: https://www.geospatial.jp/ckan/dataset/plateau
@@ -27,7 +25,7 @@ fields:
     semantic: { role: dimension }
   - name: description
     title: 想定の名前
-    description: 洪水は河川の名前（多摩川水系多摩川など）、土砂災害は現象の種類
+    description: 洪水は河川の名前、土砂災害は現象の種類
     semantic: { role: dimension }
   - name: admin_type
     title: 河川の管理者

@@ -9,4 +9,5 @@ dependencies = [
     "lxml>=5",
     "pyarrow>=18",
     "shapely>=2",
+    "fdl-cli>=0.19.0",
 ]
