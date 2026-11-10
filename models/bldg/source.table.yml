@@ -10,13 +10,13 @@ fields:
   - name: city_code
     title: 市区町村コード（5 桁）
     description: 政令市は市のコード（札幌市は 01100）
-    semantic: { role: entity, name: city }
+    annotations: { queria: { semantic: { role: entity, name: city } } }
   - name: lg_code
     title: 全国地方公共団体コード
-    semantic: { role: entity, name: city }
+    annotations: { queria: { semantic: { role: entity, name: city } } }
   - name: prefecture_code
     title: 都道府県コード
-    semantic: { role: entity, name: prefecture }
+    annotations: { queria: { semantic: { role: entity, name: prefecture } } }
   - name: prefecture_name
     title: 都道府県名
   - name: city_name
