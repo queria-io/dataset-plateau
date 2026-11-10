@@ -217,7 +217,6 @@ dependencies = [
     { name = "fdl-cli" },
     { name = "lxml" },
     { name = "pyarrow" },
-    { name = "queria" },
     { name = "shapely" },
 ]
 
@@ -228,7 +227,6 @@ requires-dist = [
     { name = "fdl-cli", specifier = ">=0.19.0" },
     { name = "lxml", specifier = ">=5" },
     { name = "pyarrow", specifier = ">=18" },
-    { name = "queria", specifier = ">=0.47.1" },
     { name = "shapely", specifier = ">=2" },
 ]
 
@@ -1192,21 +1190,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/da/92/1446574745d74df0c92e6aa4a7b0b3130706a4142b2d1a5869f2eaa423c6/pyyaml-6.0.3-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:16249ee61e95f858e83976573de0f5b2893b3677ba71c9dd36b9cf8be9ac6d65", size = 829923, upload-time = "2025-09-25T21:32:54.537Z" },
     { url = "https://files.pythonhosted.org/packages/f0/7a/1c7270340330e575b92f397352af856a8c06f230aa3e76f86b39d01b416a/pyyaml-6.0.3-cp314-cp314t-win_amd64.whl", hash = "sha256:4ad1906908f2f5ae4e5a8ddfce73c320c2a1429ec52eafd27138b7f1cbe341c9", size = 174062, upload-time = "2025-09-25T21:32:55.767Z" },
     { url = "https://files.pythonhosted.org/packages/f1/12/de94a39c2ef588c7e6455cfbe7343d3b2dc9d6b6b2f40c4c6565744c873d/pyyaml-6.0.3-cp314-cp314t-win_arm64.whl", hash = "sha256:ebc55a14a21cb14062aa4162f906cd962b28e2e9ea38f9b4391244cd8de4ae0b", size = 149341, upload-time = "2025-09-25T21:32:56.828Z" },
-]
-
-[[package]]
-name = "queria"
-version = "0.47.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "duckdb" },
-    { name = "fdl-cli" },
-    { name = "jsonschema" },
-    { name = "pyyaml" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/94/86/89cf992824c0c36c3cb74a7a3e50d8b5bcb01d4763016b2ff452cdb87eee/queria-0.47.1.tar.gz", hash = "sha256:0bc43cfe3bff478bc0c413cb5fbe0e6be2fa3fc7cc42053efbd3c6c46b8807fa", size = 403075, upload-time = "2026-11-04T04:54:13.754Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d4/6a/39f9c2d9cdcdc13b56e68ec7823a5e18329cf645af4ca5f60c1a778733eb/queria-0.47.1-py3-none-any.whl", hash = "sha256:bf133f6c12d5d03ca777dceb993d75d1b93b1f400fc0d9226d741a2058ff25e3", size = 170368, upload-time = "2026-11-04T04:54:12.369Z" },
 ]
 
 [[package]]

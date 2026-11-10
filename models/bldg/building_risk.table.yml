@@ -6,7 +6,6 @@ description: |-
 
   - 洪水は河川と想定の規模ごとに 1 行あり、同じ建物に何行も付きます
   - 行がない建物は「浸水しない」とは限りません。想定が載っていない市区町村があります
-published: true
 sources:
   - path: https://www.geospatial.jp/ckan/dataset/plateau
 fields:

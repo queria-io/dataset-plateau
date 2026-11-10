@@ -7,7 +7,6 @@ description: |-
   - どの項目が入っているかは市区町村によって違います。住所・建築年・延べ面積・構造は一部の市区町村にしかありません
   - 住所は町丁目までで、番地は入っていません
   - 原典が不明を表す値（高さの -9999 など）は NULL にしています
-published: true
 primary_key: [gml_id]
 sources:
   - path: https://www.geospatial.jp/ckan/dataset/plateau

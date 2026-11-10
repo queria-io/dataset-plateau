@@ -1,4 +1,5 @@
-spec_version: "0.1"
+# この dataset.yml は fdl commit が読む（FDL の dataset.json を YAML で書いたもの）。
+# 表の説明は models/ の *.table.yml に書く。表と列の型・NULL・行数は fdl commit がカタログから埋める。
 name: plateau
 title: PLATEAU 3D 都市モデルの建物
 description: |-
@@ -41,5 +42,7 @@ schemas:
   - name: bldg
     title: 建築物
 
-themes: [housing_land, justice_safety_environment]
-cover: 🏙️
+annotations:
+  queria:
+    themes: [housing_land, justice_safety_environment]
+    cover: 🏙️

@@ -3,7 +3,6 @@ name: source
 title: 取り込んだ市区町村のデータ
 description: |-
   取り込んだ PLATEAU の市区町村ごとのデータです。1 行が 1 市区町村で、出典のページ URL・データの年度・製品仕様書のバージョンを持ちます。
-published: true
 primary_key: [city_code]
 sources:
   - path: https://www.geospatial.jp/ckan/dataset/plateau
