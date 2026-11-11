@@ -59,7 +59,7 @@ Parquet の名前は zip の名前から作ります。zip の名前には年度
 ```bash
 git submodule update --init
 uv sync
-scripts/build.sh   # queria sync -- python main.py
+scripts/build.sh   # fdl checkout → python main.py → fdl commit → fdl push
 ```
 
 原典は市区町村ごとに不定期に更新されます。`.github/workflows/check.yml` が毎週カタログと公開中の `bldg.source` を比較し、変わった市区町村があれば通知します。取り込みは自動では実行せず、通知を受けてから `scripts/build.sh` を実行します。
