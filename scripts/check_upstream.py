@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from pipelines.sources import CATALOG, USER_AGENT, is_city, to_source  # noqa: E402
 from shared.fetch import fetch  # noqa: E402
 
-PUBLISHED = "ducklake:https://data.queria.io/datasets/queria/plateau/ducklake.duckdb"
+PUBLISHED = "ducklake:https://data.queria.io/datasets/queria/plateau/metadata.db"
 
 
 def published() -> dict[str, str]:
