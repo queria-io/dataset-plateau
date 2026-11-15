@@ -8,7 +8,7 @@
 {%- do hooks.append(
     "insert into {{ this }} select p.source_city_code, p.gml_id, min(t.machiaza_id), arg_min(t.lg_code, t.machiaza_id)
      from {{ ref('building_point') }} p
-     join japan_address_code.main.town_shape t on st_contains(t.geometry, p.point)
+     join {{ ref('stg_town_shape') }} t on st_contains(t.geometry, p.point)
      where left(coalesce(p.city_code, p.source_city_code), 2) = '" ~ code ~ "' and left(t.lg_code, 2) = '" ~ code ~ "'
      group by p.source_city_code, p.gml_id"
 ) -%}
@@ -16,6 +16,7 @@
 {{ config(post_hook=hooks) }}
 
 -- depends_on: {{ ref('building_point') }}
+-- depends_on: {{ ref('stg_town_shape') }}
 select
     cast(null as varchar) as source_city_code,
     cast(null as varchar) as gml_id,
