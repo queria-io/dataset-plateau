@@ -18,7 +18,7 @@ models:
   plateau:
     +database: plateau
     bldg:
-      # raw は取得したまま、stg は型付け・列名の付け替え・不明を表す値の NULL 化。mart の SQL に展開し、テーブルは作らない
+      # raw は取得したまま、stg は型付け・列名の変更・不明を表す値の NULL 化。mart の SQL に展開し、テーブルは作らない
       raw:
         +materialized: ephemeral
       stg:
@@ -27,7 +27,9 @@ models:
         +materialized: table
         # 市区町村と位置で引くので、行グループを 8,192 行にする（建物は 1 棟 140 バイト前後で 1 つ 1MB 前後）。
         # 設定はスキーマに付く (dbt は __dbt_tmp に書いてから改名するので、テーブルに付けても効かない)
-        +pre-hook: "CALL plateau.set_option('parquet_row_group_size', 8192, schema => 'bldg')"
+        # フックは下の work にも引き継がれるので、メモリに置く work では流さない
+        +pre-hook:
+          - "{{ \"CALL plateau.set_option('parquet_row_group_size', 8192, schema => 'bldg')\" if this.database == 'plateau' else '' }}"
         # building を作る途中の表。メモリの中のデータベースに置き、公開しない
         work:
           +database: memory

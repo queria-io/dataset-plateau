@@ -7,7 +7,7 @@ select
     b.gml_id,
     b.city_code,
     s.year as source_year,
-    st_pointonsurface(b.geometry) as point
+    st_pointonsurface(st_makevalid(st_geomfromwkb(b.geometry))) as point
 from {{ ref('stg_building') }} b
 join {{ ref('stg_sources') }} s on s.city_code = b.source_city_code
 where b.geometry is not null

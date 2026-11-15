@@ -34,7 +34,7 @@ select
     k.lng,
     k.lat,
     {{ jis_mesh3('k.lng', 'k.lat') }} as mesh3,
-    b.geometry,
+    st_makevalid(st_geomfromwkb(b.geometry)) as geometry,
     b.source_city_code,
     k.source_year,
     b.file

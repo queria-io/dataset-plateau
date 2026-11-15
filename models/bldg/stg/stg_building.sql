@@ -1,4 +1,4 @@
-{# PLATEAU の建物。1 行が 1 都市のデータの 1 棟。外形を形として読み、不明を表す値を NULL にする #}
+{# PLATEAU の建物。1 行が 1 都市のデータの 1 棟。不明を表す値を NULL にする。外形は WKB のまま持ち、残す建物に絞ったあとで形にする #}
 
 select
     source_city_code,
@@ -24,6 +24,6 @@ select
     land_real_estate_ids,
     lod,
     attributes,
-    st_makevalid(st_geomfromwkb(geometry)) as geometry,
+    geometry,
     file
 from {{ ref('raw_building') }}
