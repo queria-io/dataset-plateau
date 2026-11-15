@@ -35,11 +35,11 @@ plateau:
             # 1 つも生成されない。fdl commit はインライン化された行を断るので、常に切る
             DATA_INLINING_ROW_LIMIT: 0
         # 建物に小地域と町字を位置から付けるのに読む Queria の公開データセット。読むだけ
-        - path: "ducklake:https://data.queria.io/datasets/queria/e_stat/ducklake.duckdb"
+        - path: "ducklake:https://data.queria.io/datasets/queria/e_stat/metadata.db"
           alias: e_stat
           is_ducklake: true
           read_only: true
-        - path: "ducklake:https://data.queria.io/datasets/queria/japan_address_code/ducklake.duckdb"
+        - path: "ducklake:https://data.queria.io/datasets/queria/japan_address_code/metadata.db"
           alias: japan_address_code
           is_ducklake: true
           read_only: true
