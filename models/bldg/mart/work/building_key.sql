@@ -10,7 +10,7 @@ with city_owner as (
        政令市のコードは 3 桁目が 1 で 5 桁目が 0（01100、14130 など）、区はそのあとの 29 個のうちにある #}
     select c.city_code, max(s.city_code) as owner_code
     from (select distinct city_code from {{ ref('building_point') }}) c
-    join {{ ref('source') }} s
+    join {{ ref('stg_sources') }} s
         on s.city_code = c.city_code
         or (s.city_code like '__1_0'
             and left(c.city_code, 2) = left(s.city_code, 2)
@@ -32,7 +32,7 @@ own as (
 small_area as (
     select o.gml_id, min(s.key_code) as small_area_code
     from own o
-    join e_stat.boundary.small_area s on st_contains(s.geometry, o.point)
+    join {{ ref('stg_small_area') }} s on st_contains(s.geometry, o.point)
     group by o.gml_id
 ),
 

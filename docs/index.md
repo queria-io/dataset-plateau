@@ -50,6 +50,6 @@ ORDER BY buildings DESC;
 
 CityGML は lxml で建物ごとに読み、用途などの符号を同じ zip の符号表で名前に変換します。座標は緯度・経度の順なので経度・緯度に変換します。製品仕様書のバージョンによって名前の違う要素（3.x までの `BuildingRiverFloodingRiskAttribute` など）は両方読みます。
 
-市区町村のデータは 3 次メッシュの単位で作られていて、境のメッシュに隣の市区町村の建物も含みます。同じ `gml_id` の建物は 1 つにし、隣の市区町村が自分のデータを持っているときはそちらを使います（`models/work/building_key.sql`）。小地域と町字は、Queria の公開データセット e_stat と japan_address_code の形に代表点（`ST_PointOnSurface`）を当てて付けます。
+市区町村のデータは 3 次メッシュの単位で作られていて、境のメッシュに隣の市区町村の建物も含みます。同じ `gml_id` の建物は 1 つにし、隣の市区町村が自分のデータを持っているときはそちらを使います（`models/bldg/mart/work/building_key.sql`）。小地域と町字は、Queria の公開データセット e_stat と japan_address_code の形に代表点（`ST_PointOnSurface`）を当てて付けます。
 
 Parquet の名前は zip の名前から作ります。zip の名前には年度とバージョンが入るため、原典が作り直されると新しい名前になり、その市区町村だけを取得し直します。
