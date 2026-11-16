@@ -1,5 +1,6 @@
-schema: bldg
-name: building_risk
+---
+$schema: https://queria.io/schemas/table/v1.json
+table: bldg.building_risk
 title: 建物の災害リスク
 description: |-
   建物ごとの浸水深と土砂災害警戒区域です。1 行が 1 棟の 1 想定で、gml_id で building と結合します。
@@ -14,29 +15,29 @@ fields:
     description: building の gml_id
   - name: city_code
     title: 市区町村コード（5 桁）
-    annotations: { queria: { semantic: { role: entity, name: city } } }
+    semantic: {role: entity, name: city}
   - name: lg_code
     title: 全国地方公共団体コード
-    annotations: { queria: { semantic: { role: entity, name: city } } }
+    semantic: {role: entity, name: city}
   - name: hazard
     title: 災害の種類
     description: 洪水・津波・高潮・内水・ため池・土砂災害
-    annotations: { queria: { semantic: { role: dimension } } }
+    semantic: {role: dimension}
   - name: description
     title: 想定の名前
     description: 洪水は河川の名前、土砂災害は現象の種類
-    annotations: { queria: { semantic: { role: dimension } } }
+    semantic: {role: dimension}
   - name: admin_type
     title: 河川の管理者
     description: 国・都道府県
   - name: scale
     title: 想定の規模
     description: 計画規模（L1）・想定最大規模（L2）
-    annotations: { queria: { semantic: { role: dimension } } }
+    semantic: {role: dimension}
   - name: rank
     title: 浸水ランク
     description: 0.5m 未満・0.5m 以上 3m 未満など
-    annotations: { queria: { semantic: { role: dimension } } }
+    semantic: {role: dimension}
   - name: rank_code
     title: 浸水ランクのコード
   - name: rank_org
@@ -49,4 +50,5 @@ fields:
   - name: area_type
     title: 土砂災害の区域
     description: 土砂災害警戒区域・土砂災害特別警戒区域
-    annotations: { queria: { semantic: { role: dimension } } }
+    semantic: {role: dimension}
+---

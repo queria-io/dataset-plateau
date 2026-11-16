@@ -1,5 +1,6 @@
-schema: bldg
-name: building
+---
+$schema: https://queria.io/schemas/table/v1.json
+table: bldg.building
 title: 建物
 description: |-
   PLATEAU の建物です。1 行が 1 棟で、外形（LOD0）と計測高さ・階数・用途などを持ちます。
@@ -20,29 +21,29 @@ fields:
   - name: city_code
     title: 市区町村コード（5 桁）
     description: 建物がある市区町村
-    annotations: { queria: { semantic: { role: entity, name: city } } }
+    semantic: {role: entity, name: city}
   - name: lg_code
     title: 全国地方公共団体コード
     description: city_code に検査数字を付けた 6 桁
-    annotations: { queria: { semantic: { role: entity, name: city } } }
+    semantic: {role: entity, name: city}
   - name: prefecture_code
     title: 都道府県コード
-    annotations: { queria: { semantic: { role: entity, name: prefecture } } }
+    semantic: {role: entity, name: prefecture}
   - name: class
     title: 建物の種類
     description: 普通建物・堅ろう建物など
-    annotations: { queria: { semantic: { role: dimension } } }
+    semantic: {role: dimension}
   - name: usage
     title: 用途
     description: 住宅・共同住宅・商業施設・工場など
-    annotations: { queria: { semantic: { role: dimension } } }
+    semantic: {role: dimension}
   - name: usage_code
     title: 用途のコード
     description: 製品仕様書の符号（411 が住宅など）
   - name: detailed_usage
     title: 詳細用途
     description: 都市計画基礎調査の建物用途（独立住宅など）
-    annotations: { queria: { semantic: { role: dimension } } }
+    semantic: {role: dimension}
   - name: measured_height
     title: 計測高さ（m）
     description: 地面から建物の最も高い所までの高さ
@@ -62,11 +63,11 @@ fields:
   - name: structure
     title: 構造
     description: 木造・鉄骨造・鉄筋コンクリート造など。一部の市区町村だけ
-    annotations: { queria: { semantic: { role: dimension } } }
+    semantic: {role: dimension}
   - name: fireproof_structure
     title: 耐火構造の種別
     description: 耐火・準耐火・その他
-    annotations: { queria: { semantic: { role: dimension } } }
+    semantic: {role: dimension}
   - name: survey_year
     title: 調査年
     description: 属性のもとになった都市計画基礎調査の年
@@ -88,11 +89,11 @@ fields:
   - name: small_area_code
     title: 小地域コード
     description: 代表点が入る国勢調査の小地域
-    annotations: { queria: { semantic: { role: entity, name: small_area } } }
+    semantic: {role: entity, name: small_area}
   - name: machiaza_id
     title: 町字 ID
     description: 代表点が入る町字。lg_code との組で町字を指します
-    annotations: { queria: { semantic: { role: entity, name: town } } }
+    semantic: {role: entity, name: town}
   - name: lng
     title: 経度
     description: 外形の上の代表点（ST_PointOnSurface）
@@ -101,7 +102,7 @@ fields:
   - name: mesh3
     title: 3 次メッシュコード
     description: 代表点が入る 3 次メッシュ（約 1km 四方）
-    annotations: { queria: { semantic: { role: entity, name: mesh } } }
+    semantic: {role: entity, name: mesh}
   - name: geometry
     title: 外形
     description: LOD0 の平面の形（経緯度 JGD2011）
@@ -113,3 +114,4 @@ fields:
   - name: file
     title: 原典のファイル
     description: CityGML のファイル名（3 次メッシュごと）
+---
