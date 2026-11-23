@@ -1,11 +1,11 @@
-$schema: https://queria.io/schemas/dataset/v1.json
+$schema: https://tabledoc.queria.io/schemas/dataset/v1.json
 name: plateau
 title: PLATEAU 3D 都市モデルの建物
 description: |-
   国土交通省の PLATEAU（3D 都市モデル）の建物です。PLATEAU が整備した市区町村の建物を 1 棟ずつ、外形・高さ・階数・用途と、浸水深などの災害リスクとともに収録しています。
 
   出典：「3D都市モデル（Project PLATEAU）」（国土交通省、各地方公共団体）。市区町村ごとのページ URL は bldg.source にあります。Queria が加工したものです。
-keywords:
+topics:
   - PLATEAU
   - 3D都市モデル
   - 建物
@@ -23,13 +23,16 @@ licenses:
   - CC-BY-4.0
 
 sources:
-  - title: 3D都市モデル（Project PLATEAU）ポータルサイト
+  - id: geospatial-plateau
+    title: 3D都市モデル（Project PLATEAU）ポータルサイト
     path: https://www.geospatial.jp/ckan/dataset/plateau
-  - title: PLATEAU サイトポリシー
+  - id: site-policy
+    title: PLATEAU サイトポリシー
     path: https://www.mlit.go.jp/plateau/site-policy/
 
 contributors:
-  - title: 国土交通省
+  - id: plateau
+    title: 国土交通省
     path: https://www.mlit.go.jp/plateau/
     roles: [rightsHolder]
 
@@ -39,5 +42,3 @@ schemas:
   - name: bldg
     title: 建築物
 
-themes: [housing_land, justice_safety_environment]
-cover: 🏙️
