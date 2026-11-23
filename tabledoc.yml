@@ -5,6 +5,7 @@ description: |-
   国土交通省の PLATEAU（3D 都市モデル）の建物です。PLATEAU が整備した市区町村の建物を 1 棟ずつ、外形・高さ・階数・用途と、浸水深などの災害リスクとともに収録しています。
 
   出典：「3D都市モデル（Project PLATEAU）」（国土交通省、各地方公共団体）。市区町村ごとのページ URL は bldg.source にあります。Queria が加工したものです。
+image: cover.png
 topics:
   - PLATEAU
   - 3D都市モデル
