@@ -26,15 +26,15 @@ licenses:
 sources:
   - id: geospatial-plateau
     title: 3D都市モデル（Project PLATEAU）ポータルサイト
-    path: https://www.geospatial.jp/ckan/dataset/plateau
+    url: https://www.geospatial.jp/ckan/dataset/plateau
   - id: site-policy
     title: PLATEAU サイトポリシー
-    path: https://www.mlit.go.jp/plateau/site-policy/
+    url: https://www.mlit.go.jp/plateau/site-policy/
 
 contributors:
   - id: plateau
     title: 国土交通省
-    path: https://www.mlit.go.jp/plateau/
+    url: https://www.mlit.go.jp/plateau/
     roles: [rightsHolder]
 
 spatial_coverage: [JP]
