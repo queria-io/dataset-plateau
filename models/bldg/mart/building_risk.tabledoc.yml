@@ -12,10 +12,10 @@ columns:
     description: building の gml_id
   - name: city_code
     title: 市区町村コード（5 桁）
-    entity: {type: foreign, name: city}
+    entity: city
   - name: lg_code
     title: 全国地方公共団体コード
-    entity: {type: foreign, name: city}
+    entity: city
   - name: hazard
     title: 災害の種類
     description: 洪水・津波・高潮・内水・ため池・土砂災害

@@ -18,14 +18,14 @@ columns:
   - name: city_code
     title: 市区町村コード（5 桁）
     description: 建物がある市区町村
-    entity: {type: foreign, name: city}
+    entity: city
   - name: lg_code
     title: 全国地方公共団体コード
     description: city_code に検査数字を付けた 6 桁
-    entity: {type: foreign, name: city}
+    entity: city
   - name: prefecture_code
     title: 都道府県コード
-    entity: {type: foreign, name: prefecture}
+    entity: prefecture
   - name: class
     title: 建物の種類
     description: 普通建物・堅ろう建物など
@@ -86,11 +86,11 @@ columns:
   - name: small_area_code
     title: 小地域コード
     description: 代表点が入る国勢調査の小地域
-    entity: {type: foreign, name: small_area}
+    entity: small_area
   - name: machiaza_id
     title: 町字 ID
     description: 代表点が入る町字。lg_code との組で町字を指します
-    entity: {type: foreign, name: town}
+    entity: town
   - name: lng
     title: 経度
     description: 外形の上の代表点（ST_PointOnSurface）
@@ -99,7 +99,7 @@ columns:
   - name: mesh3
     title: 3 次メッシュコード
     description: 代表点が入る 3 次メッシュ（約 1km 四方）
-    entity: {type: foreign, name: mesh}
+    entity: mesh
   - name: geometry
     title: 外形
     description: LOD0 の平面の形（経緯度 JGD2011）
