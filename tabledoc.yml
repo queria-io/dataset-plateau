@@ -41,4 +41,3 @@ update_frequency: irregular
 schemas:
   - name: bldg
     title: 建築物
-
