@@ -1,6 +1,4 @@
----
-$schema: https://queria.io/schemas/table/v1.json
-table: bldg.building
+$schema: https://tabledoc.queria.io/schemas/table/v1.json
 title: 建物
 description: |-
   PLATEAU の建物です。1 行が 1 棟で、外形（LOD0）と計測高さ・階数・用途などを持ちます。
@@ -9,9 +7,8 @@ description: |-
   - 住所は町丁目までで、番地は入っていません
   - 原典が不明を表す値（高さの -9999 など）は NULL にしています
 primary_key: [gml_id]
-sources:
-  - path: https://www.geospatial.jp/ckan/dataset/plateau
-fields:
+sources: [geospatial-plateau]
+columns:
   - name: gml_id
     title: 建物の GML ID
     description: CityGML の gml:id。PLATEAU の 3D Tiles・MVT の gml_id と同じ
@@ -21,29 +18,29 @@ fields:
   - name: city_code
     title: 市区町村コード（5 桁）
     description: 建物がある市区町村
-    semantic: {role: entity, name: city}
+    entity: {type: foreign, name: city}
   - name: lg_code
     title: 全国地方公共団体コード
     description: city_code に検査数字を付けた 6 桁
-    semantic: {role: entity, name: city}
+    entity: {type: foreign, name: city}
   - name: prefecture_code
     title: 都道府県コード
-    semantic: {role: entity, name: prefecture}
+    entity: {type: foreign, name: prefecture}
   - name: class
     title: 建物の種類
     description: 普通建物・堅ろう建物など
-    semantic: {role: dimension}
+    dimension: categorical
   - name: usage
     title: 用途
     description: 住宅・共同住宅・商業施設・工場など
-    semantic: {role: dimension}
+    dimension: categorical
   - name: usage_code
     title: 用途のコード
     description: 製品仕様書の符号（411 が住宅など）
   - name: detailed_usage
     title: 詳細用途
     description: 都市計画基礎調査の建物用途（独立住宅など）
-    semantic: {role: dimension}
+    dimension: categorical
   - name: measured_height
     title: 計測高さ（m）
     description: 地面から建物の最も高い所までの高さ
@@ -63,11 +60,11 @@ fields:
   - name: structure
     title: 構造
     description: 木造・鉄骨造・鉄筋コンクリート造など。一部の市区町村だけ
-    semantic: {role: dimension}
+    dimension: categorical
   - name: fireproof_structure
     title: 耐火構造の種別
     description: 耐火・準耐火・その他
-    semantic: {role: dimension}
+    dimension: categorical
   - name: survey_year
     title: 調査年
     description: 属性のもとになった都市計画基礎調査の年
@@ -89,11 +86,11 @@ fields:
   - name: small_area_code
     title: 小地域コード
     description: 代表点が入る国勢調査の小地域
-    semantic: {role: entity, name: small_area}
+    entity: {type: foreign, name: small_area}
   - name: machiaza_id
     title: 町字 ID
     description: 代表点が入る町字。lg_code との組で町字を指します
-    semantic: {role: entity, name: town}
+    entity: {type: foreign, name: town}
   - name: lng
     title: 経度
     description: 外形の上の代表点（ST_PointOnSurface）
@@ -102,7 +99,7 @@ fields:
   - name: mesh3
     title: 3 次メッシュコード
     description: 代表点が入る 3 次メッシュ（約 1km 四方）
-    semantic: {role: entity, name: mesh}
+    entity: {type: foreign, name: mesh}
   - name: geometry
     title: 外形
     description: LOD0 の平面の形（経緯度 JGD2011）
@@ -114,4 +111,3 @@ fields:
   - name: file
     title: 原典のファイル
     description: CityGML のファイル名（3 次メッシュごと）
----
