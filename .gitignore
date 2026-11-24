@@ -21,3 +21,6 @@ data/
 
 # fdl checkout の作業カタログ
 .fdl/
+
+# 共通のスクリプト (git clone https://github.com/queria-io/dataset-shared.git shared)
+shared/
