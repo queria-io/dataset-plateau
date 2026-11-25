@@ -37,6 +37,7 @@ columns:
   - name: usage_code
     title: 用途のコード
     description: 製品仕様書の符号（411 が住宅など）
+    dimension: categorical
   - name: detailed_usage
     title: 詳細用途
     description: 都市計画基礎調査の建物用途（独立住宅など）

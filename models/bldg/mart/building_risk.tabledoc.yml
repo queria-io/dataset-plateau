@@ -37,6 +37,7 @@ columns:
     dimension: categorical
   - name: rank_code
     title: 浸水ランクのコード
+    dimension: categorical
   - name: rank_org
     title: 浸水ランク（独自区分）
     description: 都道府県が独自の区分で作ったときの浸水ランク
