@@ -23,7 +23,6 @@ columns:
   - name: description
     title: 想定の名前
     description: 洪水は河川の名前、土砂災害は現象の種類
-    dimension: categorical
   - name: admin_type
     title: 河川の管理者
     description: 国・都道府県
